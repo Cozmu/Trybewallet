@@ -2,15 +2,17 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCoins, saveExpense } from '../redux/actions/index';
+import getCoin from '../services/coinAPI';
 
 class WalletForm extends Component {
   state = {
     id: 0,
-    valueInput: '',
-    currencyInput: '',
-    methodInput: '',
-    tagInput: '',
-    descriptionInput: '',
+    value: '',
+    currency: 'USD',
+    method: 'Dinheiro',
+    tag: 'Alimentação',
+    description: '',
+    exchangeRates: {},
   };
 
   componentDidMount() {
@@ -23,18 +25,21 @@ class WalletForm extends Component {
     this.setState({ [name]: value });
   };
 
-  addExpense = () => {
+  addExpense = async () => {
     const { dispatch } = this.props;
-    dispatch(saveExpense(this.state));
+    const requirement = await getCoin();
+    delete requirement.USDT;
+    dispatch(saveExpense({ ...this.state, exchangeRates: requirement }));
     this.setState((prev) => ({
       id: prev.id + 1,
-      valueInput: '',
-      descriptionInput: '',
+      value: '',
+      description: '',
     }));
   };
 
   render() {
     const { currencies } = this.props;
+    const { description, value } = this.state;
     return (
       <form>
         <label htmlFor="valueInput">
@@ -42,7 +47,8 @@ class WalletForm extends Component {
           <input
             type="number"
             id="valueInput"
-            name="valueInput"
+            name="value"
+            value={ value }
             data-testid="value-input"
             onChange={ this.handleChange }
           />
@@ -51,7 +57,7 @@ class WalletForm extends Component {
           Moeda:
           <select
             id="currencyInput"
-            name="currencyInput"
+            name="currency"
             data-testid="currency-input"
             onChange={ this.handleChange }
           >
@@ -68,7 +74,7 @@ class WalletForm extends Component {
           Categoria:
           <select
             id="methodInput"
-            name="methodInput"
+            name="method"
             data-testid="method-input"
             onChange={ this.handleChange }
           >
@@ -81,7 +87,7 @@ class WalletForm extends Component {
           Método de Pagamento:
           <select
             id="tagInput"
-            name="tagInput"
+            name="tag"
             data-testid="tag-input"
             onChange={ this.handleChange }
           >
@@ -97,7 +103,8 @@ class WalletForm extends Component {
           <input
             type="text"
             id="descriptionInput"
-            name="descriptionInput"
+            value={ description }
+            name="description"
             data-testid="description-input"
             onChange={ this.handleChange }
           />
