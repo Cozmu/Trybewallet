@@ -34,3 +34,9 @@ export const fetchCoins = () => async (dispatch) => {
     dispatch(requestCoinError(error));
   }
 };
+
+export const SAVE_EXPENSE = 'SAVE_EXPENSE';
+export const saveExpense = (expense) => ({
+  type: SAVE_EXPENSE,
+  payload: expense,
+});

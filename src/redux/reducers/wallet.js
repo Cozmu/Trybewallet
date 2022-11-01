@@ -2,6 +2,7 @@ import {
   REQUEST_COIN,
   REQUEST_COIN_SUCCESS,
   REQUEST_COIN_ERROR,
+  SAVE_EXPENSE,
 } from '../actions/index';
 
 const initialState = {
@@ -30,6 +31,11 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       error: action.error,
+    };
+  case SAVE_EXPENSE:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.payload],
     };
   default:
     return state;
