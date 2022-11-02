@@ -29,12 +29,14 @@ class WalletForm extends Component {
     const { dispatch } = this.props;
     const requirement = await getCoin();
     delete requirement.USDT;
-    dispatch(saveExpense({ ...this.state, exchangeRates: requirement }));
-    this.setState((prev) => ({
-      id: prev.id + 1,
-      value: '',
-      description: '',
-    }));
+    this.setState({ exchangeRates: requirement }, () => {
+      dispatch(saveExpense(this.state));
+      this.setState((prev) => ({
+        id: prev.id + 1,
+        value: '',
+        description: '',
+      }));
+    });
   };
 
   render() {
