@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import expenseGenerator from './expenseGenerator';
+import ExpenseGenerator from './expenseGenerator';
 
 class Table extends Component {
   render() {
@@ -9,7 +9,7 @@ class Table extends Component {
     return (
       <div>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Descrição</th>
               <th>Tag</th>
@@ -21,12 +21,14 @@ class Table extends Component {
               <th>Moeda de conversão</th>
               <th>Editar/Excluir</th>
             </tr>
+          </thead>
+          <tbody>
+            { expenses.length > 0 && expenses.map((element) => (
+              <tr key={ element.id }>
+                <ExpenseGenerator { ...element } />
+              </tr>
+            )) }
           </tbody>
-          { expenses && expenses.forEach((element) => (
-            <tbody key={ element.id }>
-              <expenseGenerator { ...element } />
-            </tbody>
-          )) }
         </table>
       </div>
     );
