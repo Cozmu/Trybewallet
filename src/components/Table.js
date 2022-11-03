@@ -2,8 +2,15 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseGenerator from './expenseGenerator';
+import { withdrawExpense } from '../redux/actions';
 
 class Table extends Component {
+  deleteTask = (id) => {
+    const { expenses, dispatch } = this.props;
+    const newExpense = expenses.filter((e) => e.id !== id);
+    dispatch(withdrawExpense(newExpense));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -25,7 +32,7 @@ class Table extends Component {
           <tbody>
             { expenses.length > 0 && expenses.map((element) => (
               <tr key={ element.id }>
-                <ExpenseGenerator { ...element } />
+                <ExpenseGenerator deleteTask={ this.deleteTask } { ...element } />
               </tr>
             )) }
           </tbody>

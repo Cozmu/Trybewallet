@@ -13,7 +13,7 @@ class Header extends Component {
         total += +transacao.toFixed(2);
       });
     }
-    return total;
+    return total.toFixed(2);
   };
 
   render() {

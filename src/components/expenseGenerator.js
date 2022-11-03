@@ -3,7 +3,15 @@ import React from 'react';
 
 class ExpenseGenerator extends React.Component {
   render() {
-    const { value, currency, method, tag, description, exchangeRates } = this.props;
+    const {
+      id,
+      value,
+      currency,
+      method,
+      tag,
+      description,
+      exchangeRates,
+      deleteTask } = this.props;
     const nomeMoeda = exchangeRates[currency].name;
     const CambioUtilizado = +exchangeRates[currency].ask;
     const valorConvertido = exchangeRates[currency].ask * value;
@@ -18,7 +26,16 @@ class ExpenseGenerator extends React.Component {
         <td>{CambioUtilizado.toFixed(2)}</td>
         <td>{valorConvertido.toFixed(2)}</td>
         <td>Real</td>
-        <td>{}</td>
+        <td>
+          <button
+            type="button"
+            data-testid="delete-btn"
+            onClick={ () => deleteTask(id) }
+            // value={ id }
+          >
+            Excluir
+          </button>
+        </td>
       </>
     );
   }

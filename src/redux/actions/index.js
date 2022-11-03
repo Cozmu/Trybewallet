@@ -40,3 +40,9 @@ export const saveExpense = (expense) => ({
   type: SAVE_EXPENSE,
   payload: expense,
 });
+
+export const WITHDRAW_EXPENSE = 'WITHDRAW_EXPENSE';
+export const withdrawExpense = (newExpense) => ({
+  type: WITHDRAW_EXPENSE,
+  newExpense,
+});
