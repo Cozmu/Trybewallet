@@ -4,6 +4,7 @@ import {
   REQUEST_COIN_ERROR,
   SAVE_EXPENSE,
   WITHDRAW_EXPENSE,
+  TARGET_ID,
 } from '../actions/index';
 
 const initialState = {
@@ -42,6 +43,12 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       expenses: action.newExpense,
+    };
+  case TARGET_ID:
+    return {
+      ...state,
+      idToEdit: action.id,
+      editor: true,
     };
   default:
     return state;

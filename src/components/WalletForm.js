@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCoins, saveExpense } from '../redux/actions/index';
+import { fetchCoins, saveExpense, updateExpenses } from '../redux/actions/index';
 import getCoin from '../services/coinAPI';
 
 class WalletForm extends Component {
@@ -25,6 +25,11 @@ class WalletForm extends Component {
     this.setState({ [name]: value });
   };
 
+  editExpense = async () => {
+    const { expenses, idToEdit, dispatch } = this.props;
+    const targetExpense = expenses[idToEdit];
+  };
+
   addExpense = async () => {
     const { dispatch } = this.props;
     const requirement = await getCoin();
@@ -41,7 +46,7 @@ class WalletForm extends Component {
 
   render() {
     // const { description, value, currencies } = this.props;
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     const { description, value } = this.state;
     return (
       <form>
@@ -112,12 +117,20 @@ class WalletForm extends Component {
             onChange={ this.handleChange }
           />
         </label>
-        <button
-          type="button"
-          onClick={ () => this.addExpense() }
-        >
-          Adicionar despesa
-        </button>
+        {editor ? (
+          <button
+            type="button"
+            onClick={ () => this.editExpense() }
+          >
+            Editar despesa
+          </button>)
+          : (
+            <button
+              type="button"
+              onClick={ () => this.addExpense() }
+            >
+              Adicionar despesa
+            </button>)}
       </form>
     );
   }
@@ -125,6 +138,9 @@ class WalletForm extends Component {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  editor: state.wallet.editor,
+  idToEdit: state.wallet.idToEdit,
+  expenses: state.wallet.expenses,
 });
 
 WalletForm.propTypes = {

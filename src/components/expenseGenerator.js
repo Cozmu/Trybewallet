@@ -11,7 +11,9 @@ class ExpenseGenerator extends React.Component {
       tag,
       description,
       exchangeRates,
-      deleteTask } = this.props;
+      deleteTask,
+      toEdit,
+    } = this.props;
     const nomeMoeda = exchangeRates[currency].name;
     const CambioUtilizado = +exchangeRates[currency].ask;
     const valorConvertido = exchangeRates[currency].ask * value;
@@ -34,6 +36,13 @@ class ExpenseGenerator extends React.Component {
             // value={ id }
           >
             Excluir
+          </button>
+          <button
+            type="button"
+            data-testid="edit-btn"
+            onClick={ () => toEdit(id) }
+          >
+            Editar
           </button>
         </td>
       </>

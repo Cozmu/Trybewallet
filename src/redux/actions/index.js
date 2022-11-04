@@ -46,3 +46,15 @@ export const withdrawExpense = (newExpense) => ({
   type: WITHDRAW_EXPENSE,
   newExpense,
 });
+
+export const TARGET_ID = 'TARGET_ID';
+export const targetID = (id) => ({
+  type: TARGET_ID,
+  id,
+});
+
+export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
+export const updateExpenses = (payload) => ({
+  type: UPDATE_EXPENSES,
+  payload,
+});
