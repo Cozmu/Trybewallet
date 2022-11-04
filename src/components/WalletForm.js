@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCoins, saveExpense, updateExpenses } from '../redux/actions/index';
+import { fetchCoins, saveExpense, targetExpense } from '../redux/actions/index';
 import getCoin from '../services/coinAPI';
 
 class WalletForm extends Component {
@@ -20,14 +20,26 @@ class WalletForm extends Component {
     dispatch(fetchCoins());
   }
 
+  componentDidUpdate(prev) {
+    const { expenses, idToEdit, editor } = this.props;
+    if (editor && !prev.editor) {
+      const despesaQueVaiAtualizar = expenses[idToEdit];
+      this.setState(despesaQueVaiAtualizar);
+    }
+  }
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
 
-  editExpense = async () => {
-    const { expenses, idToEdit, dispatch } = this.props;
-    const targetExpense = expenses[idToEdit];
+  editExpense = () => {
+    const { dispatch } = this.props;
+    dispatch(targetExpense(this.state));
+    this.setState({
+      value: '',
+      description: '',
+    });
   };
 
   addExpense = async () => {
@@ -45,7 +57,6 @@ class WalletForm extends Component {
   };
 
   render() {
-    // const { description, value, currencies } = this.props;
     const { currencies, editor } = this.props;
     const { description, value } = this.state;
     return (

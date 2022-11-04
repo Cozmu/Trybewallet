@@ -58,3 +58,9 @@ export const updateExpenses = (payload) => ({
   type: UPDATE_EXPENSES,
   payload,
 });
+
+export const TARGET_EXPENSE = 'TARGET_EXPENSE';
+export const targetExpense = (payload) => ({
+  type: TARGET_EXPENSE,
+  payload,
+});

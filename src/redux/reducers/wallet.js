@@ -5,6 +5,7 @@ import {
   SAVE_EXPENSE,
   WITHDRAW_EXPENSE,
   TARGET_ID,
+  TARGET_EXPENSE,
 } from '../actions/index';
 
 const initialState = {
@@ -16,7 +17,30 @@ const initialState = {
   idToEdit: 0,
 };
 
+const newExpense = (exp, act) => exp.map((e) => {
+  console.log(exp, act);
+  if (e.id === act.id) {
+    return {
+      ...e,
+      value: act.value,
+      currency: act.currency,
+      method: act.method,
+      tag: act.tag,
+      description: act.description,
+    };
+  }
+  return e;
+});
+
 const wallet = (state = initialState, action) => {
+  // const newExpense = (exp, act) => exp.map((e, i, array) => {
+  //   if (e.id === act.id) {
+  //     array.splice(act.id, 1, act);
+  //     return e;
+  //   }
+  //   return e;
+  // });
+
   switch (action.type) {
   case REQUEST_COIN:
     return {
@@ -49,6 +73,12 @@ const wallet = (state = initialState, action) => {
       ...state,
       idToEdit: action.id,
       editor: true,
+    };
+  case TARGET_EXPENSE:
+    return {
+      ...state,
+      editor: false,
+      expenses: newExpense(state.expenses, action.payload),
     };
   default:
     return state;
