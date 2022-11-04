@@ -33,7 +33,6 @@ class ExpenseGenerator extends React.Component {
             type="button"
             data-testid="delete-btn"
             onClick={ () => deleteTask(id) }
-            // value={ id }
           >
             Excluir
           </button>

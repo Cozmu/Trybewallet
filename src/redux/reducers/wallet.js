@@ -18,7 +18,6 @@ const initialState = {
 };
 
 const newExpense = (exp, act) => exp.map((e) => {
-  console.log(exp, act);
   if (e.id === act.id) {
     return {
       ...e,
