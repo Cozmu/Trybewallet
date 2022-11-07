@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../redux/actions';
+import '../css/Login.css';
 
 class Login extends React.Component {
   state = {
@@ -36,33 +37,40 @@ class Login extends React.Component {
     const { isDisabled, emailInput } = this.state;
     return (
       <form>
-        <label htmlFor="email-input">
-          E-mail:
-          <input
-            name="emailInput"
-            id="email-input"
-            type="text"
-            data-testid="email-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="password-input">
-          Senha:
-          <input
-            name="password"
-            id="password-input"
-            type="password"
-            data-testid="password-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <button
-          type="button"
-          onClick={ () => this.saveUser(emailInput) }
-          disabled={ isDisabled }
-        >
-          Entrar
-        </button>
+        <section className="login-form">
+          <h2>Inciar sessão</h2>
+          <div className="inputs">
+            <label htmlFor="email-input">
+              E-mail:
+              <input
+                className="email-input"
+                name="emailInput"
+                id="email-input"
+                type="text"
+                data-testid="email-input"
+                onChange={ this.handleChange }
+              />
+            </label>
+            <label htmlFor="password-input">
+              Senha:
+              <input
+                className="password-input"
+                name="password"
+                id="password-input"
+                type="password"
+                data-testid="password-input"
+                onChange={ this.handleChange }
+              />
+            </label>
+          </div>
+          <button
+            type="button"
+            onClick={ () => this.saveUser(emailInput) }
+            disabled={ isDisabled }
+          >
+            Entrar
+          </button>
+        </section>
       </form>
     );
   }

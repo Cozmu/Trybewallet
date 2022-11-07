@@ -1,0 +1,35 @@
+.header-container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 90px;
+  justify-content: space-between;
+}
+
+.header-container .logo {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.header-container .email-field {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.header-container .usuario-container {
+  align-items: center;
+  display: flex;
+}
+
+.gastos {
+  align-items: center;
+  display: flex;
+}
+
+.gastos .total-field {
+  margin-left: 3px;
+}
+
+.gastos .moeda {
+  margin-right: 5px;
+}
