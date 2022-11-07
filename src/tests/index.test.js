@@ -1,11 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { legacy_createStore as createStore } from 'redux';
+// import { legacy_createStore as createStore } from 'redux';
 import App from '../App';
-import { renderWithRouterAndRedux, renderWithRedux, renderWithRouter } from './helpers/renderWith';
-import rootReducer from '../redux/reducers/index';
-import Wallet from '../pages/Wallet';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
+// import rootReducer from '../redux/reducers/index';
+// import Wallet from '../pages/Wallet';
 
 describe('REQUISITOS DE TESTES', () => {
   it('Verificar se há uma área de login com inputs de senha, email e botão de logar na página inicial', () => {
