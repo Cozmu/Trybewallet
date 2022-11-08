@@ -1,0 +1,45 @@
+.table-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  width: 75%;
+}
+
+.table {
+  border-radius: 2px;
+  width: 90%;
+}
+
+.thead {
+  background-color: rgb(237, 242, 244);
+}
+
+.thead th {
+  height: 35px;
+}
+
+.tbody td {
+  height: 25px;
+  padding: 2px;
+}
+
+.btn-edt {
+  cursor: pointer;
+  margin-right: 5px;
+  width: 40px;
+}
+
+.btn-ex {
+  cursor: pointer;
+  margin-left: 5px;
+  width: 40px;
+}
+
+.btns {
+  text-align: center;
+}

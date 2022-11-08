@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseGenerator from './expenseGenerator';
 import { withdrawExpense, targetID } from '../redux/actions';
+import '../css/Table.css';
 
 class Table extends Component {
   toEdit = (id) => {
@@ -19,9 +20,9 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <div>
-        <table>
-          <thead>
+      <div className="table-container">
+        <table className="table">
+          <thead className="thead">
             <tr>
               <th>Descrição</th>
               <th>Tag</th>
@@ -34,7 +35,7 @@ class Table extends Component {
               <th>Editar/Excluir</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tbody">
             { expenses.length > 0 && expenses.map((element) => (
               <tr key={ element.id }>
                 <ExpenseGenerator

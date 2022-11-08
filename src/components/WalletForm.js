@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCoins, saveExpense, targetExpense } from '../redux/actions/index';
 import getCoin from '../services/coinAPI';
+import '../css/WalletForm.css';
 
 class WalletForm extends Component {
   state = {
@@ -60,12 +61,13 @@ class WalletForm extends Component {
     const { currencies, editor } = this.props;
     const { description, value } = this.state;
     return (
-      <form>
+      <form className="form-container">
         <label htmlFor="valueInput">
           Valor:
           <input
             type="number"
             id="valueInput"
+            className="valueInput"
             name="value"
             value={ value }
             data-testid="value-input"
@@ -76,6 +78,7 @@ class WalletForm extends Component {
           Moeda:
           <select
             id="currencyInput"
+            className="currencyInput"
             name="currency"
             data-testid="currency-input"
             onChange={ this.handleChange }
@@ -93,6 +96,7 @@ class WalletForm extends Component {
           Método de Pagamento:
           <select
             id="methodInput"
+            className="methodInput"
             name="method"
             data-testid="method-input"
             onChange={ this.handleChange }
@@ -106,6 +110,7 @@ class WalletForm extends Component {
           Categoria:
           <select
             id="tagInput"
+            className="tagInput"
             name="tag"
             data-testid="tag-input"
             onChange={ this.handleChange }
@@ -122,6 +127,7 @@ class WalletForm extends Component {
           <input
             type="text"
             id="descriptionInput"
+            className="descriptionInput"
             value={ description }
             name="description"
             data-testid="description-input"
@@ -131,6 +137,7 @@ class WalletForm extends Component {
         {editor ? (
           <button
             type="button"
+            className="save-btn"
             onClick={ () => this.editExpense() }
           >
             Editar despesa
@@ -138,6 +145,7 @@ class WalletForm extends Component {
           : (
             <button
               type="button"
+              className="save-btn"
               onClick={ () => this.addExpense() }
             >
               Adicionar despesa

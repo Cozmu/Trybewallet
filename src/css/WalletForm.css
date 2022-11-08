@@ -1,0 +1,66 @@
+.form-container {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 134px;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 20px;
+  padding: 15px;
+  width: 75%;
+}
+
+.form-container input {
+  height: 35px;
+  margin-left: 3px;
+}
+
+.form-container select {
+  height: 35px;
+  margin-left: 3px;
+}
+
+.form-container label {
+  margin-left: 10px;
+}
+
+.valueInput {
+  font-size: medium;
+  padding: 10px;
+  width: 150px;
+}
+
+.descriptionInput {
+  font-size: medium;
+  padding: 10px;
+  width: 280px;
+}
+
+.tagInput {
+  cursor: pointer;
+  padding: 10px;
+  width: 150px;
+}
+
+.currencyInput {
+  cursor: pointer;
+  padding: 10px;
+  width: 90px;
+}
+
+.methodInput {
+  cursor: pointer;
+  padding: 10px;
+  width: 230px;
+}
+
+.save-btn {
+  cursor: pointer;
+  height: 40px;
+  padding: 5px;
+}
+
+.save-btn:active {
+  background-color: rgb(151, 157, 172);
+}

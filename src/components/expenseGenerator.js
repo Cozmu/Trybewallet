@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
+import { AiFillEdit } from 'react-icons/ai';
 
 class ExpenseGenerator extends React.Component {
   render() {
@@ -28,20 +30,22 @@ class ExpenseGenerator extends React.Component {
         <td>{CambioUtilizado.toFixed(2)}</td>
         <td>{valorConvertido.toFixed(2)}</td>
         <td>Real</td>
-        <td>
+        <td className="btns">
           <button
             type="button"
-            data-testid="delete-btn"
-            onClick={ () => deleteTask(id) }
-          >
-            Excluir
-          </button>
-          <button
-            type="button"
+            className="btn-edt"
             data-testid="edit-btn"
             onClick={ () => toEdit(id) }
           >
-            Editar
+            <AiFillEdit />
+          </button>
+          <button
+            type="button"
+            className="btn-ex"
+            data-testid="delete-btn"
+            onClick={ () => deleteTask(id) }
+          >
+            <RiDeleteBin6Fill />
           </button>
         </td>
       </>
