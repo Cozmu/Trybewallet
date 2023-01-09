@@ -1,6 +1,6 @@
 # Seja bem-vindo ao projeto Trybewallet!!💸📈
 
-#### Essse projeto tem como objetivo propor uma carteira de controle de gastos com conversor de moedas, onde o usuário pode montar suas despesas com as expecifícações desejadas. Com esse projeto tive meu primeiro contato com <a href="https://redux.js.org/">Redux</a> e suas funcionalidades que servem para o gerenciamento de estado global de aplicações.
+#### Esse projeto tem como objetivo propor uma carteira de controle de gastos com conversor de moedas, onde o usuário pode montar suas despesas com as expecifícações desejadas. Com esse projeto tive meu primeiro contato com <a href="https://redux.js.org/">Redux</a> e suas funcionalidades que servem para o gerenciamento de estado global de aplicações.
 
 <div style="margin-top:15px">
   <img alt="exibição do projeto" src="cap.png">
